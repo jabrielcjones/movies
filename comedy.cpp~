@@ -1,0 +1,61 @@
+// file name -- comedy.cpp
+// This file contains the implementation of the Comedy class
+
+// ============== header files ================
+
+#include "comedy.h"          // for comedy class
+#include <iostream>        // for input/output stream
+using namespace std;
+
+// ============== named constants ======================
+
+// ============== implementation of functions ================
+
+Comedy::Comedy()
+       :Movie()
+/**
+   precondition:  none
+   
+   postcondition: initializes the member variable of the
+                  derived member variables.
+
+**/
+{
+   strcpy(movie_type, "Comedy");
+}  // default constructor
+
+
+Comedy::Comedy(char* company, char* movieTitle, char* id, char* rating)
+       :Movie(company, movieTitle, id, rating)
+/**
+   precondition: none
+
+   postcondition: intializes the member variables of the Movie
+                  class based on the arguments passed to the
+                  constructor of the Action class
+**/
+{
+   strcpy(movie_type, "Comedy");
+}  // constructor
+
+
+double Comedy::calculateCharge()
+/**
+   precondition: none
+
+   postcondition: calculates the charge for movie rental
+**/
+{
+  return 1.75;
+}
+
+
+double Comedy::calculateLateFee(int days)
+/**
+   precondition: none
+
+   postcondition: calculate late fees for movie
+**/
+{
+   return days * 2.50;
+}

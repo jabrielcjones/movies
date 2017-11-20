@@ -1,0 +1,198 @@
+// file name -- movie.cpp
+// This file contains the implementation of the movie class
+
+// ============== header files ================
+
+#include "movie.h"          // for movie class
+#include <iostream>         // for input/output stream
+#include <cstring>          // for string manipulation
+
+using namespace std;
+
+// ============== named constants ======================
+
+// ============== implementation of functions ================
+
+Movie::Movie()
+/**
+   precondition:  none
+
+   postcondition: initializes the member variables of the Movie class.
+
+**/
+{
+   rating = new char[6];
+   company = new char[40];
+   movieTitle = new char[40];
+   id = new char[40];
+
+   strcpy(rating, "No Rating");
+   strcpy(company, "No Company");
+   strcpy(movieTitle, "No Movie");
+   strcpy(id, "xxxxxxxxxx");
+}  // default constructor
+
+
+Movie::Movie(char* company, char* movieTitle, char* id, char* rating)
+/**
+   precondition:  none
+
+   postcondition: initializes the member variables of the Movie class
+                  based on the arguments passed
+**/
+{
+   this -> rating = new char[strlen(rating) + 1];
+   strcpy(this -> rating, rating);
+
+   this -> company = new char[strlen(company) + 1];
+   strcpy(this -> company, company);
+
+   this -> movieTitle = new char[strlen(movieTitle) + 1];
+   strcpy(this -> movieTitle, movieTitle);
+
+   this -> id = new char[strlen(id) + 1];
+   strcpy(this -> id, id);
+}  // constructor
+
+
+Movie::Movie(const Movie& source)
+/**
+   precondition: none
+
+   postcondition: copy the contents of source to the current object; deep
+                  copy is used to duplicate the content of source
+**/
+{
+   rating = new char[strlen(source.rating) + 1];
+   strcpy(rating, source.rating);
+
+   company = new char[strlen(source.company) + 1];
+   strcpy(company, source.company);
+
+   movieTitle = new char[strlen(source.movieTitle) + 1];
+   strcpy(movieTitle, source.movieTitle);
+
+   id = new char[strlen(source.id) + 1];
+   strcpy(id, source.id);
+}  // copy constructor
+
+
+Movie::~Movie()
+/**
+   preconditions: none
+
+   postconditions: deallocate memory for dynamic variables
+**/
+{
+   delete[] rating;
+   delete[] company;
+   delete[] movieTitle;
+   delete[] id;
+}  // deconstructor
+
+
+char* Movie::getMovie()
+/**
+   precondition:  none
+
+   postcondition: return movieTitle
+**/
+{
+   return movieTitle;
+}  // getMovieTitle Function
+
+
+bool Movie::operator==(const Movie& source)
+/**
+   precondition: none
+
+   postcondition: compare the id numbers of each object
+**/
+{
+   bool result;
+
+   if(this -> id == source.id)
+      result = true;
+   else
+      result = false;
+
+   return result;
+}
+
+
+
+char* Movie::getRating()
+/**
+   precondition:  none
+
+   postcondition: return rating
+**/
+{
+   return rating;
+}  // getRating Function
+
+;
+char* Movie::getCompany()
+/**
+   precondition:  none
+
+   postcondition: retun company
+**/
+{
+   return company;
+}  // getCompany function
+
+
+char* Movie::getId()
+/**
+   precondition:  none
+
+   postcondition: retun id
+**/
+{
+   return id;
+}  // getId Function
+
+
+void Movie::changeMovie(char* movieTitle)
+/**
+   precondition: none
+
+   postcondition: changes the title of the movie
+**/
+{
+   strcpy(this -> movieTitle, movieTitle);
+}  // changeMovieTitle Function
+
+
+void Movie::changeRating(char* rating)
+/**
+   precondition: none
+
+   postcondition: changes the rating of the movie
+**/
+{
+   strcpy(this -> rating, rating);
+}  // changeRating Function
+
+
+void Movie::changeCompany(char* company)
+/**
+   precondition: none
+
+   postcondition: changes the company of the movie
+**/
+{
+   strcpy(this -> company, company);
+}  // changeCompany Function
+
+
+void Movie::changeId(char* id)
+/**
+   precondition: none
+
+   postcondition: changes the id of the movie
+**/
+{
+   strcpy(this -> id, id);
+}  // changeId function
