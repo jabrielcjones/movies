@@ -1,4 +1,4 @@
-// file name -- assign05.cpp
+// file name -- movies.cpp
 
 
 // ============================== header files ===================================
